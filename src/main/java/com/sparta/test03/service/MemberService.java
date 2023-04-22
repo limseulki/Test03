@@ -17,7 +17,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    // 회원 상세 조회
+    // 회원 조회
     @Transactional(readOnly = true)
     public MemberResponseDto findMember(Long id) {
         Member member = memberRepository.findById(id).orElseThrow(
