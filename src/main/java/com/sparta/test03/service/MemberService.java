@@ -17,6 +17,7 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    // 회원 상세 조회
     @Transactional(readOnly = true)
     public MemberResponseDto findMember(Long id) {
         Member member = memberRepository.findById(id).orElseThrow(
@@ -25,11 +26,13 @@ public class MemberService {
         return new MemberResponseDto(member);
     }
 
+    // 회원 전체 조회
     @Transactional(readOnly = true)
     public List<MemberResponseDto> findAllMember() {
         return memberRepository.findAll().stream().map(MemberResponseDto::new).collect(Collectors.toList());
     }
 
+    // 회원 등록
     public Member createMember(MemberRequestDto requestDto) {
         Member member = new Member(requestDto);
         memberRepository.save(member);

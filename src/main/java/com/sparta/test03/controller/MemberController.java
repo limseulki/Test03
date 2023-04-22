@@ -34,6 +34,7 @@ public class MemberController {
     }
 
 
+    // 회원 등록
     @PostMapping("/member")
     public Member createMember(@RequestBody MemberRequestDto requestDto) {
         return memberService.createMember(requestDto);
